@@ -2,37 +2,38 @@
 {% block head_title %}Home{% endblock head_title %}
 {% block content %}
 <div class="container">
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Category
-        </button>
-        <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="{% url 'home' %}">All</a></li>
-            <li>
-                <hr class="dropdown-divider">
-            </li>
-            {% for category in categories %}
-            <li><a class="dropdown-item" href="{% url 'category_wise_book' category.slug %}">{{category.name}}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="my-5">
-        <div>
-            <div class="row row-cols-md-4">
+    <div class="row">
+        <div class="col-lg-3 mb-3">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Category
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="{% url 'home' %}">All</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    {% for category in categories %}
+                    <li><a class="dropdown-item" href="{% url 'category_wise_book' category.slug %}">{{ category.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
                 {% for book in data %}
-                <div class="col-3 gy-2">
-                    <div class="card text-center">
+                <div class="col">
+                    <div class="card text-center h-100">
+                        <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.title }}">
                         <div class="card-body">
-                            <img src="{{book.image.url}}" class="card-img-top" alt="{{book.title}}">
-                            <h3 class="card-title">{{book.title}}</h3>
+                            <h5 class="card-title">{{ book.title }}</h5>
                             <p class="card-text">{{ book.description|truncatechars:50 }}</p>
-                            <p class="card-text fw-bold">Price: ${{book.price}}</p>
+                            <p class="card-text fw-bold">Price: ${{ book.price }}</p>
                             <p class="card-subtitle mb-2 text-muted">
-                                Category:{% for catagory in book.categories.all %}
-                                <button class="btn btn-sm btn-secondary rounded-pill m-1">{{ catagory }}</button>
+                                Category:
+                                {% for category in book.categories.all %}
+                                <button class="btn btn-sm btn-secondary rounded-pill m-1">{{ category }}</button>
                                 {% endfor %}
                             </p>
-                            <a href="{% url "book_details" book.id %}" class="btn btn-primary">View Details</a>
+                            <a href="{% url 'book_details' book.id %}" class="btn btn-primary">View Details</a>
                         </div>
                     </div>
                 </div>
