@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 from pathlib import Path
 import environ
+import dj_database_url
 
 
 env = environ.Env()
@@ -99,15 +100,23 @@ WSGI_APPLICATION = 'RamisaLibrary.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': env("DB_NAME"),
+#         'USER': env("DB_USER"),
+#         'PASSWORD': env("DB_PASSWORD"),
+#         'HOST': env("DB_HOST"),
+#         'PORT': env("DB_PORT"),
+#     }
+# }
+# Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASSWORD"),
-        'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
-    }
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgresql://mamar_bank_aeev_user:jZBdTwE2DX00Q7VcABEBl0ZZTXz2q2TX@dpg-cq0o2n6ehbks73eesrdg-a.oregon-postgres.render.com/mamar_bank_aeev',
+       
+    )
 }
 
 
