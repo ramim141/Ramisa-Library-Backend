@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}{{type}}{% endblock head_title %}
+{% block content %}
+<div class="container w-50 m-auto">
+    <h1>{{type}}</h1>
+    <div>
+        <form method="post" novalidate enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <!-- Non Feilds Error -->
+            {% if form.non_field_errors %}
+            {% for err in form.non_field_errors %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{ err }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <button class="btn btn-warning my-2" type="submit">{{type}}</button>
+            {% if type == 'Login' %}
+            <p class="small text-muted">
+                Don't have an account, <a class="text-decoration-none" href="{% url "signup" %}">SignUp</a>
+            </p>
+            {% else %}
+            <p class="small text-muted">
+                Already have an account, <a class="text-decoration-none" href="{% url "login" %}">Login</a>
+            </p>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock %}

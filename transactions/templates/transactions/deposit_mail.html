@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Deposit Confirmation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container my-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h3 class="text-primary">Hello {{user.first_name}} {{user.last_name}},</h3>
+                <p class="text-dark">Your Deposit Request for ${{amount}} has been successfully completed. After the deposit, your total amount is ${{user.account.balance}}.</p>
+                <h5 class="text-success">Thanks For Staying With Us</h5>
+                <h4 class="text-secondary">Library Genesis</h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
