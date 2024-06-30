@@ -34,7 +34,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -114,7 +114,7 @@ WSGI_APPLICATION = 'RamisaLibrary.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgresql://mamar_bank_aeev_user:jZBdTwE2DX00Q7VcABEBl0ZZTXz2q2TX@dpg-cq0o2n6ehbks73eesrdg-a.oregon-postgres.render.com/mamar_bank_aeev',
+        default='postgresql://ramisa_library_user:bsaTKGNDWURZiUz6mdeRNBMj0LdqLh5i@dpg-cq0pbmeehbks73efjn0g-a.oregon-postgres.render.com/ramisa_library',
        
     )
 }
